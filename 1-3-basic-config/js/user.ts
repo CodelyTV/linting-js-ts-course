@@ -45,8 +45,8 @@ function validateRequiredField(field: HTMLInputElement) {
 }
 
 function validateEmail() {
-  let field = document.getElementById("email") as HTMLInputElement;
-  let isValid = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$").test(field.value);
+  const field = document.getElementById("email") as HTMLInputElement;
+  const isValid = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$").test(field.value);
   if (!isValid) {
     field.classList.add("error");
   }
@@ -54,11 +54,11 @@ function validateEmail() {
 }
 
 function validateBio() {
-  var field = document.getElementById("bio") as HTMLInputElement;
-  var fieldLength = field.value.length;
-  var isValid = fieldLength > 0 && field.value.length <= 200;
+  const field = document.getElementById("bio") as HTMLInputElement;
+  const fieldLength = field.value.length;
+  const isValid = fieldLength > 0 && field.value.length <= 200;
 
-  if (isValid = false) {
+  if (isValid === false) {
     field.classList.add("error");
   }
 
@@ -117,9 +117,9 @@ function handleFormError() {
 }
 
 function handleFormSuccess(form: HTMLFormElement, newUser: User) {
-  var thanksBlock = document.getElementById("thanks")!;
-  var title = thanksBlock.querySelector("h3")!;
-  var content = thanksBlock.querySelector("p")!;
+  const thanksBlock = document.getElementById("thanks")!;
+  const title = thanksBlock.querySelector("h3")!;
+  const content = thanksBlock.querySelector("p")!;
 
   title.innerHTML = sanitize`Thank you ${newUser.firstName} for registering!`;
   content.innerHTML = sanitize`We sent a confirmation email to <strong>${newUser.email}</strong>`;
