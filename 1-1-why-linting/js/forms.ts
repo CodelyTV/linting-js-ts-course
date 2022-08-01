@@ -1,8 +1,8 @@
-import {countChars} from "./utils";
+import { countChars } from "./utils";
 
-function fetchData(select: Element) {
-  const domain = document.domain == "localhost" ? "localhost:8080" : document.domain;
-  const type = select.getAttribute("data-type");
+async function fetchData(select: Element) {
+  const domain = document.domain === "localhost" ? "localhost:8080" : document.domain;
+  const type = select.getAttribute("data-type") as string;
 
   return fetch(`http://${domain}/data/${type}.json`)
     .then((response) => response.json())
@@ -12,20 +12,17 @@ function fetchData(select: Element) {
 }
 
 function countCharacters() {
-  const contentCounters = document.querySelectorAll('.js-count-content');
+  const contentCounters = document.querySelectorAll(".js-count-content");
 
-  for (let i = 0; i < contentCounters.length; ++i) {
-    const counter = contentCounters[i];
-    const form_field = counter.parentElement!.querySelector<HTMLInputElement>('.js-form-control')!;
-    const char_counter_container = counter.querySelector('.js-count-chars');
+  for (const counter of contentCounters) {
+    const form_field = counter.parentElement!.querySelector<HTMLInputElement>(".js-form-control")!;
+    const char_counter_container = counter.querySelector(".js-count-chars");
 
     if (char_counter_container) {
       char_counter_container.innerHTML = countChars(form_field.value).toString();
 
-      form_field.addEventListener('keyup', () => {
-        char_counter_container.innerHTML = countChars(
-          form_field.value
-        ).toString();
+      form_field.addEventListener("keyup", () => {
+        char_counter_container.innerHTML = countChars(form_field.value).toString();
       });
     }
   }
@@ -36,22 +33,21 @@ async function loadSelectData() {
   const requests = [];
 
   for (const select of dataLoaders) {
-    requests.push( await fetchData(select));
+    requests.push(await fetchData(select));
   }
 
-  requests.forEach(({ data }, index) => {
+  requests.forEach(({ data }: { data: { name: string }[] }, index) => {
     const select = dataLoaders[index];
 
     for (const item of data) {
-      const option = document.createElement('option');
+      const option = document.createElement("option");
       option.textContent = item.name;
       select.append(option);
     }
   });
 }
 
-export async function initForms() {
-  countCharacters()
-  loadSelectData()
+export function initForms(): void {
+  countCharacters();
+  loadSelectData().catch((e) => console.error(e));
 }
-
