@@ -1,7 +1,4 @@
-import {
-  hide,
-  show,
-} from "./utils";
+import { hide, show } from "./utils";
 
 export interface User {
   firstName: string;
@@ -28,18 +25,17 @@ function createUser(form: HTMLFormElement): CreateUserResponse {
     data: {
       firstName: data.firstName.value,
       lastName: data.lastName.value,
-      email: data.email.value
-    }
+      email: data.email.value,
+    },
   };
 }
 
 function validateRequiredField(field: HTMLInputElement) {
-  const isValid=!!field.value;
+  const isValid = !!field.value;
 
   if (isValid === false) {
     field.classList.add("error");
   }
-
 
   return isValid;
 }
@@ -68,10 +64,12 @@ function validateBio() {
 function validateDob() {
   const field = document.getElementById("dob") as HTMLInputElement;
   const date = +new Date(field.value);
-  const now=+new Date();
+  const now = +new Date();
   const isValid = Math.abs(new Date(now - date).getUTCFullYear() - 1970) > 18;
 
-  if (!isValid) { field.classList.add("error"); }
+  if (!isValid) {
+    field.classList.add("error");
+  }
 
   return isValid;
 }
@@ -82,13 +80,14 @@ function isFormValid() {
   formControls.forEach(function (control) {
     control.classList.remove("error");
   });
-  const isValid = validateRequiredField(document.getElementById("firstName") as HTMLInputElement) 
-    && validateRequiredField(document.getElementById("lastName") as HTMLInputElement)
-    && validateEmail()
-    && validateBio()
-    && validateDob()
-    && validateRequiredField(document.getElementById("country") as HTMLInputElement) 
-    && validateRequiredField(document.getElementById("courseCategory") as HTMLInputElement); 
+  const isValid =
+    validateRequiredField(document.getElementById("firstName") as HTMLInputElement) &&
+    validateRequiredField(document.getElementById("lastName") as HTMLInputElement) &&
+    validateEmail() &&
+    validateBio() &&
+    validateDob() &&
+    validateRequiredField(document.getElementById("country") as HTMLInputElement) &&
+    validateRequiredField(document.getElementById("courseCategory") as HTMLInputElement);
   if (!isValid) {
     show(document.getElementById("user_form_error")!);
   }
@@ -130,18 +129,18 @@ function handleFormSuccess(form: HTMLFormElement, newUser: User) {
 
 export function initUserForm() {
   document.getElementById("user_form")!.addEventListener("submit", function (ev) {
-      ev.preventDefault();
-      const form = ev.target as HTMLFormElement;
+    ev.preventDefault();
+    const form = ev.target as HTMLFormElement;
 
-      if (isFormValid()) {
-          const { success, data: newUser } = createUser(form);
+    if (isFormValid()) {
+      const { success, data: newUser } = createUser(form);
 
-          if (!success) {
-              handleFormError();
-              return;
-          }
+      if (!success) {
+        handleFormError();
+        return;
+      }
 
-          handleFormSuccess(form, newUser);
-        }
-    });
+      handleFormSuccess(form, newUser);
+    }
+  });
 }

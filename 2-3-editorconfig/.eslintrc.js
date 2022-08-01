@@ -1,14 +1,19 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "node": true
+  env: {
+    browser: true,
+    node: true,
   },
-  "parser": "@typescript-eslint/parser",
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-  "plugins": ["@typescript-eslint", "simple-import-sort", "import", "unused-imports"],
-  "rules": {
-    "semi": ["error", "always"],
-    "quotes": ["error", "double"],
+  parser: "@typescript-eslint/parser",
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:editorconfig/all",
+    "plugin:editorconfig/noconflict",
+  ],
+  plugins: ["@typescript-eslint", "simple-import-sort", "import", "unused-imports", "editorconfig"],
+  rules: {
+    semi: ["error", "always"],
+    quotes: ["error", "double"],
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
@@ -25,7 +30,7 @@ module.exports = {
         argsIgnorePattern: "^_",
       },
     ],
-    "@typescript-eslint/no-non-null-assertion": "off"
+    "@typescript-eslint/no-non-null-assertion": "off",
   },
   overrides: [
     {

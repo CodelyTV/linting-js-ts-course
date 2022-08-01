@@ -8,7 +8,7 @@ import { initUserForm } from "./user";
 function initCommon() {
   const trigger = document.querySelector(".js-trigger-container")!;
 
-  trigger.addEventListener("click", ()=>{
+  trigger.addEventListener("click", () => {
     const rel = trigger.getAttribute("rel")!;
     document.getElementById(rel)!.classList.toggle("hidden");
   });

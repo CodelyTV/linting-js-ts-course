@@ -1,16 +1,14 @@
 import { getOneByTitle, hide, show } from "./utils";
 
 function getSelectedValues(node: HTMLElement) {
-  const checkboxes = node.querySelectorAll<HTMLInputElement>("input[type=\"checkbox\"]:checked");
+  const checkboxes = node.querySelectorAll<HTMLInputElement>("input[type='checkbox']:checked");
 
-  const selectedValues = Array.from(checkboxes).map(
-    (checkbox) => checkbox.value
-  );
+  const selectedValues = Array.from(checkboxes).map((checkbox) => checkbox.value);
 
   return selectedValues;
 }
 
-function isInList(item: string,list: string[]){
+function isInList(item: string, list: string[]) {
   return list.includes(item);
 }
 

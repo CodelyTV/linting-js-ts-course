@@ -1,4 +1,4 @@
-import {countChars} from "./utils";
+import { countChars } from "./utils";
 
 function fetchData(select: Element) {
   const domain = document.domain == "localhost" ? "localhost:8080" : document.domain;
@@ -23,9 +23,7 @@ function countCharacters() {
       char_counter_container.innerHTML = countChars(form_field.value).toString();
 
       form_field.addEventListener("keyup", () => {
-        char_counter_container.innerHTML = countChars(
-          form_field.value
-        ).toString();
+        char_counter_container.innerHTML = countChars(form_field.value).toString();
       });
     }
   }
@@ -36,7 +34,7 @@ async function loadSelectData() {
   const requests = [];
 
   for (const select of dataLoaders) {
-    requests.push( await fetchData(select));
+    requests.push(await fetchData(select));
   }
 
   requests.forEach(({ data }, index) => {
@@ -54,4 +52,3 @@ export async function initForms() {
   countCharacters();
   loadSelectData();
 }
-

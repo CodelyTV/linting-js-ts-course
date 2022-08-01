@@ -2,7 +2,7 @@ interface Course {
   title: string;
 }
 
-export function countWords(str:string):number {
+export function countWords(str: string): number {
   return str.split(" ").length;
 }
 
@@ -19,7 +19,7 @@ export function hide(element: Element) {
 }
 
 export function getOneByTitle(title: string) {
-  if (title.length>=3) {
+  if (title.length >= 3) {
     const courses: Course[] = [
       {
         title: "✌️ Vue 3: Novedades aplicadas al mundo real",
