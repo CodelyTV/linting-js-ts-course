@@ -5,10 +5,27 @@ module.exports = {
   },
   "parser": "@typescript-eslint/parser",
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "import", "unused-imports", "folders"],
   "rules": {
     "semi": ["error", "always"],
     "quotes": ["error", "double"],
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/no-webpack-loader-syntax": "error",
+    "folders/match-regex": ["error", "^[a-z-]+$", "/js/"],
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        vars: "all",
+        varsIgnorePattern: "^_",
+        args: "after-used",
+        argsIgnorePattern: "^_",
+      },
+    ],
     "@typescript-eslint/no-non-null-assertion": "off"
   },
   overrides: [

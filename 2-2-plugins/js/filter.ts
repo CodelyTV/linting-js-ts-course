@@ -1,4 +1,4 @@
-import { show,hide, getOneByTitle } from "./utils";
+import { getOneByTitle, hide, show } from "./utils";
 
 function getSelectedValues(node: HTMLElement) {
   const checkboxes = node.querySelectorAll<HTMLInputElement>("input[type=\"checkbox\"]:checked");

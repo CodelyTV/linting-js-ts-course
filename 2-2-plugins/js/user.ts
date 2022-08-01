@@ -1,6 +1,6 @@
 import {
-  show,
   hide,
+  show,
 } from "./utils";
 
 export interface User {

@@ -1,8 +1,8 @@
 import "../css/sakura.css";
 import "../css/custom.css";
 
-import { initForms } from "./forms";
 import { initCategoryFilter, initSearchByTitle } from "./filter";
+import { initForms } from "./forms";
 import { initUserForm } from "./user";
 
 function initCommon() {
