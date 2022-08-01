@@ -12,17 +12,17 @@ function fetchData(select: Element) {
 }
 
 function countCharacters() {
-  const contentCounters = document.querySelectorAll('.js-count-content');
+  const contentCounters = document.querySelectorAll(".js-count-content");
 
   for (let i = 0; i < contentCounters.length; ++i) {
     const counter = contentCounters[i];
-    const form_field = counter.parentElement!.querySelector<HTMLInputElement>('.js-form-control')!;
-    const char_counter_container = counter.querySelector('.js-count-chars');
+    const form_field = counter.parentElement!.querySelector<HTMLInputElement>(".js-form-control")!;
+    const char_counter_container = counter.querySelector(".js-count-chars");
 
     if (char_counter_container) {
       char_counter_container.innerHTML = countChars(form_field.value).toString();
 
-      form_field.addEventListener('keyup', () => {
+      form_field.addEventListener("keyup", () => {
         char_counter_container.innerHTML = countChars(
           form_field.value
         ).toString();
@@ -43,7 +43,7 @@ async function loadSelectData() {
     const select = dataLoaders[index];
 
     for (const item of data) {
-      const option = document.createElement('option');
+      const option = document.createElement("option");
       option.textContent = item.name;
       select.append(option);
     }
@@ -51,7 +51,7 @@ async function loadSelectData() {
 }
 
 export async function initForms() {
-  countCharacters()
-  loadSelectData()
+  countCharacters();
+  loadSelectData();
 }
 

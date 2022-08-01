@@ -21,7 +21,7 @@ interface FormElements extends HTMLFormControlsCollection {
 }
 
 function createUser(form: HTMLFormElement): CreateUserResponse {
-  const data = form.elements as FormElements
+  const data = form.elements as FormElements;
 
   return {
     success: true,
@@ -30,27 +30,27 @@ function createUser(form: HTMLFormElement): CreateUserResponse {
       lastName: data.lastName.value,
       email: data.email.value
     }
-  }
+  };
 }
 
 function validateRequiredField(field: HTMLInputElement) {
-  const isValid=!!field.value
+  const isValid=!!field.value;
 
   if (isValid === false) {
-    field.classList.add("error")
+    field.classList.add("error");
   }
 
 
-  return isValid
+  return isValid;
 }
 
 function validateEmail() {
-  let field = document.getElementById("email") as HTMLInputElement
-  let isValid = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$").test(field.value)
+  let field = document.getElementById("email") as HTMLInputElement;
+  let isValid = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$").test(field.value);
   if (!isValid) {
     field.classList.add("error");
   }
-  return isValid
+  return isValid;
 }
 
 function validateBio() {
@@ -66,14 +66,14 @@ function validateBio() {
 }
 
 function validateDob() {
-  const field = document.getElementById("dob") as HTMLInputElement
-  const date = +new Date(field.value)
-  const now=+new Date()
-  const isValid = Math.abs(new Date(now - date).getUTCFullYear() - 1970) > 18
+  const field = document.getElementById("dob") as HTMLInputElement;
+  const date = +new Date(field.value);
+  const now=+new Date();
+  const isValid = Math.abs(new Date(now - date).getUTCFullYear() - 1970) > 18;
 
-  if (!isValid) { field.classList.add("error") }
+  if (!isValid) { field.classList.add("error"); }
 
-  return isValid
+  return isValid;
 }
 
 function isFormValid() {
@@ -88,28 +88,28 @@ function isFormValid() {
     && validateBio()
     && validateDob()
     && validateRequiredField(document.getElementById("country") as HTMLInputElement) 
-    && validateRequiredField(document.getElementById("courseCategory") as HTMLInputElement) 
+    && validateRequiredField(document.getElementById("courseCategory") as HTMLInputElement); 
   if (!isValid) {
-    show(document.getElementById("user_form_error")!)
+    show(document.getElementById("user_form_error")!);
   }
-  return isValid
+  return isValid;
 }
 
 function sanitize(strings: TemplateStringsArray, ...values: string[]) {
-  let output = ""
-  let index = 0
+  let output = "";
+  let index = 0;
   for (index = 0; index < values.length; index++) {
-    let valueString = values[index].toString()
+    let valueString = values[index].toString();
 
     if (valueString.indexOf(">") !== -1) {
-      valueString = "-"
+      valueString = "-";
     }
 
-    output += strings[index] + valueString
+    output += strings[index] + valueString;
   }
 
-  output += strings[index]
-  return output
+  output += strings[index];
+  return output;
 }
 
 function handleFormError() {
@@ -117,31 +117,31 @@ function handleFormError() {
 }
 
 function handleFormSuccess(form: HTMLFormElement, newUser: User) {
-  var thanksBlock = document.getElementById("thanks")!
-  var title = thanksBlock.querySelector("h3")!
-  var content = thanksBlock.querySelector("p")!
+  var thanksBlock = document.getElementById("thanks")!;
+  var title = thanksBlock.querySelector("h3")!;
+  var content = thanksBlock.querySelector("p")!;
 
-  title.innerHTML = sanitize`Thank you ${newUser.firstName} for registering!`
-  content.innerHTML = sanitize`We sent a confirmation email to <strong>${newUser.email}</strong>`
+  title.innerHTML = sanitize`Thank you ${newUser.firstName} for registering!`;
+  content.innerHTML = sanitize`We sent a confirmation email to <strong>${newUser.email}</strong>`;
 
-  hide(form)
-  show(thanksBlock)
+  hide(form);
+  show(thanksBlock);
 }
 
 export function initUserForm() {
   document.getElementById("user_form")!.addEventListener("submit", function (ev) {
-      ev.preventDefault()
-      const form = ev.target as HTMLFormElement
+      ev.preventDefault();
+      const form = ev.target as HTMLFormElement;
 
       if (isFormValid()) {
-          const { success, data: newUser } = createUser(form)
+          const { success, data: newUser } = createUser(form);
 
           if (!success) {
-              handleFormError()
-              return
+              handleFormError();
+              return;
           }
 
-          handleFormSuccess(form, newUser)
+          handleFormSuccess(form, newUser);
         }
     });
 }

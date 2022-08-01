@@ -18,8 +18,8 @@ window.addEventListener("DOMContentLoaded", () => {
   initCommon();
 
   if (document.getElementById("category")) {
-    initCategoryFilter()
-    initSearchByTitle()
+    initCategoryFilter();
+    initSearchByTitle();
   }
   if (document.querySelector("form")) {
     initForms();
