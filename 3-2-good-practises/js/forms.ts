@@ -1,7 +1,7 @@
 import { countChars } from "./utils";
 
 function fetchData(select: Element) {
-  const domain = document.domain == "localhost" ? "localhost:8080" : document.domain;
+  const domain = document.domain === "localhost" ? "localhost:8080" : document.domain;
   const type = select.getAttribute("data-type");
 
   return fetch(`http://${domain}/data/${type}.json`)
@@ -16,14 +16,14 @@ function countCharacters() {
 
   for (let i = 0; i < contentCounters.length; ++i) {
     const counter = contentCounters[i];
-    const form_field = counter.parentElement!.querySelector<HTMLInputElement>(".js-form-control")!;
-    const char_counter_container = counter.querySelector(".js-count-chars");
+    const formField = counter.parentElement!.querySelector<HTMLInputElement>(".js-form-control")!;
+    const charCounterContainer = counter.querySelector(".js-count-chars");
 
-    if (char_counter_container) {
-      char_counter_container.innerHTML = countChars(form_field.value).toString();
+    if (charCounterContainer) {
+      charCounterContainer.innerHTML = countChars(formField.value).toString();
 
-      form_field.addEventListener("keyup", () => {
-        char_counter_container.innerHTML = countChars(form_field.value).toString();
+      formField.addEventListener("keyup", () => {
+        charCounterContainer.innerHTML = countChars(formField.value).toString();
       });
     }
   }
