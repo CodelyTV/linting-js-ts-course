@@ -34,10 +34,15 @@ async function loadSelectData() {
   const requests = [];
 
   for (const select of dataLoaders) {
-    requests.push(await fetchData(select));
+    requests.push(fetchData(select));
   }
 
-  requests.forEach(({ data }, index) => {
+  const responses = await Promise.all(requests).catch((e) => {
+    console.error(e);
+    return [];
+  });
+
+  responses.forEach(({ data }, index) => {
     const select = dataLoaders[index];
 
     for (const item of data) {
