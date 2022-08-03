@@ -9,8 +9,9 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:editorconfig/all",
     "plugin:editorconfig/noconflict",
+    "plugin:import/typescript",
   ],
-  plugins: ["@typescript-eslint", "simple-import-sort", "import", "unused-imports", "editorconfig"],
+  plugins: ["@typescript-eslint", "simple-import-sort", "unused-imports", "import", "editorconfig", "hexagonal-architecture"],
   rules: {
     //error prevention
     "array-callback-return": ["error", { checkForEach: true }],
@@ -55,6 +56,14 @@ module.exports = {
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
+    "import/no-restricted-paths": [
+      "error",
+      {
+        zones: [
+          { target: "./src", from: "./ui" },
+        ],
+      },
+    ],
     "import/no-webpack-loader-syntax": "error",
     "simple-import-sort/exports": "error",
     "simple-import-sort/imports": "error",
@@ -78,6 +87,12 @@ module.exports = {
         "@typescript-eslint/no-unsafe-call": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-var-requires": "off",
+      },
+    },
+    {
+      files: ["src/**/*.ts"],
+      rules: {
+        "hexagonal-architecture/enforce": ["error"],
       },
     },
   ],
