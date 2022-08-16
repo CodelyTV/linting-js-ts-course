@@ -9,6 +9,12 @@ module.exports = {
   "rules": {
     "semi": ["error", "always"],
     "quotes": ["error", "double"],
+    "no-restricted-imports": ["warn", {
+      patterns: [{ 
+        group: ["**/utils"],
+        message: "Please use or move the utils method to shared folder."
+      }]
+    }, ],
     "@typescript-eslint/no-non-null-assertion": "off"
   },
   overrides: [
