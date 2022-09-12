@@ -1,0 +1,19 @@
+name: 💅 Lint
+
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: 💅 Lint
+    steps:
+      - name: 👍 Checkout
+        uses: actions/checkout@v2
+
+      - name: 📥 Install Dependencies
+        run: npm install
+        working-directory: ./4-1-commit-hooks
+
+      - name: 💅 Lint
+        run: npm run lint
+        working-directory: ./4-1-commit-hooks
