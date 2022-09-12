@@ -10,9 +10,16 @@ module.exports = {
     "plugin:editorconfig/all",
     "plugin:editorconfig/noconflict",
     "plugin:import/typescript",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
-  plugins: ["@typescript-eslint", "simple-import-sort", "unused-imports", "import", "editorconfig", "hexagonal-architecture"],
+  plugins: [
+    "@typescript-eslint",
+    "simple-import-sort",
+    "unused-imports",
+    "import",
+    "editorconfig",
+    "hexagonal-architecture",
+  ],
   rules: {
     //error prevention
     "array-callback-return": ["error", { checkForEach: true }],
@@ -60,9 +67,7 @@ module.exports = {
     "import/no-restricted-paths": [
       "error",
       {
-        zones: [
-          { target: "./src", from: "./ui" },
-        ],
+        zones: [{ target: "./src", from: "./ui" }],
       },
     ],
     "import/no-webpack-loader-syntax": "error",
