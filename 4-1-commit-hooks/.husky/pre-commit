@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-cd 4-1-commit-hooks && npm run lint
+cd 4-1-commit-hooks && npx lint-staged
