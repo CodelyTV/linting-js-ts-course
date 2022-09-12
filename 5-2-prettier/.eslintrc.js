@@ -10,6 +10,7 @@ module.exports = {
     "plugin:editorconfig/all",
     "plugin:editorconfig/noconflict",
     "plugin:import/typescript",
+    "plugin:prettier/recommended"
   ],
   plugins: ["@typescript-eslint", "simple-import-sort", "unused-imports", "import", "editorconfig", "hexagonal-architecture"],
   rules: {
