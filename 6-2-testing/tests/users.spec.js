@@ -12,7 +12,7 @@ test("should render users in the document", async () => {
 
   await printUsers();
 
-  expect(screen.queryByText("Patata")).toBe(null);
+  expect(screen.queryByText("Patata")).toBeNull();
   expect(screen.queryByText("Rafa")).toBeTruthy();
   expect(screen.queryByText("Núria")).toBeTruthy();
 });
