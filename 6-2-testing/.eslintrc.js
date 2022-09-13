@@ -77,7 +77,12 @@ module.exports = {
   overrides: [
     {
       files: ["tests/*.spec.js"],
-      extends: ["plugin:jest/recommended", "plugin:jest/style"],
+      extends: [
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "plugin:jest-dom/recommended",
+        "plugin:testing-library/dom",
+      ],
     },
   ],
 };
