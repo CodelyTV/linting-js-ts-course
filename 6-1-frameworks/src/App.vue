@@ -4,14 +4,14 @@ import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 
 export default defineComponent({
+  components: {
+    HelloWorld,
+    TheWelcome,
+  },
   data() {
     return {
       msg: "You did it!",
     };
-  },
-  components: {
-    HelloWorld,
-    TheWelcome,
   },
 });
 </script>
