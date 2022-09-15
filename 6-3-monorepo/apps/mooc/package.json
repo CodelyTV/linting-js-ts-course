@@ -1,0 +1,18 @@
+{
+  "name": "@codely/mooc-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+  },
+  "dependencies": {
+    "@codely/backend-mooc-context": "workspace:contexts/backend/mooc",
+    "@codely/frontend-mooc-context": "workspace:contexts/frontend/mooc",
+    "@codely/shared-context": "workspace:contexts/shared",
+    "next": "12.1.0"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^11.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.1.0"
+  }
+}
